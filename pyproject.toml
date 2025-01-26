@@ -1,0 +1,47 @@
+[project]
+name = "captcha-parser"
+version = "0.1.0"
+
+# ----------------------------------------------------------------
+
+description = "Simple project of captcha parser in Python."
+
+authors = [
+  { name = "photowey", email = "photowey@gmail.com" },
+]
+
+# ----------------------------------------------------------------
+
+dependencies = [
+  "opencv-python>=4.11.0.86",
+  "numpy>=2.2.2",
+  #"matplotlib>=3.10.0",
+  "pillow>=11.1.0",
+  "pytesseract>=0.3.13",
+  # "tesserocr>=2.7.1"
+]
+
+# ----------------------------------------------------------------
+
+requires-python = "==3.13.*"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+
+# ----------------------------------------------------------------
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+start = "python src/main.py"
+clean = "python clean.py"
+package = "pyinstaller --onefile --name captcha-parser --paths src src/main.py"
+transfer = "pdm export -f requirements --no-hashes"
+
+[tool.pdm.build]
+package-dir = "src"
+
+# ----------------------------------------------------------------
+
+[repository.pypi]
+url = "https://mirrors.aliyun.com/pypi/simple"
